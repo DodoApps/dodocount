@@ -170,13 +170,16 @@ struct MenuBarView: View {
                     }
                 }
             } label: {
-                Image(systemName: "square.and.arrow.up")
-                    .font(.system(size: 10, weight: .medium))
-                    .foregroundColor(.secondary)
+                HStack(spacing: 3) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 9, weight: .medium))
+                    Text(L10n.Share.copyStats)
+                        .font(.system(size: 10, weight: .medium))
+                }
+                .foregroundColor(.secondary)
             }
             .menuStyle(.borderlessButton)
-            .frame(width: 24)
-            .help("Copy stats")
+            .help(L10n.Share.copyStats)
 
             // Refresh button
             Button(action: { analyticsService.refreshData() }) {
