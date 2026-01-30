@@ -288,6 +288,7 @@ class GoogleAuthService: NSObject, ObservableObject {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
+            kSecAttrService as String: "com.dodocount",
             kSecValueData as String: data
         ]
 
@@ -299,6 +300,7 @@ class GoogleAuthService: NSObject, ObservableObject {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
+            kSecAttrService as String: "com.dodocount",
             kSecReturnData as String: true
         ]
 
@@ -315,7 +317,8 @@ class GoogleAuthService: NSObject, ObservableObject {
     private func deleteFromKeychain(key: String) {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: key
+            kSecAttrAccount as String: key,
+            kSecAttrService as String: "com.dodocount"
         ]
         SecItemDelete(query as CFDictionary)
     }
