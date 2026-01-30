@@ -133,6 +133,12 @@ struct MenuBarView: View {
 
             Spacer()
 
+            // Refresh button
+            HeaderButton(icon: "arrow.clockwise", tooltip: "Refresh") {
+                analyticsService.refreshData()
+                searchConsole.refreshData()
+            }
+
             // Settings button
             HeaderButton(icon: "gearshape", tooltip: "Settings") {
                 openSettings()
