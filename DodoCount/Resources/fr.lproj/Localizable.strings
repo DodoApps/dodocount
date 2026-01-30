@@ -1,0 +1,138 @@
+/*
+  Localizable.strings
+  DodoCount - French (Français)
+*/
+
+// MARK: - App
+"app.name" = "DodoCount";
+"app.version" = "Version %@";
+"app.copyright" = "© 2026 DodoApps";
+"app.tagline" = "Votre compagnon Google Analytics pour macOS";
+"app.description" = "DodoCount est une élégante application de barre de menus qui vous donne un accès instantané à vos données Google Analytics 4 et Search Console. Surveillez les visiteurs en temps réel, suivez les métriques quotidiennes et gardez un œil sur les performances de votre site — le tout depuis votre barre de menus.";
+
+// MARK: - Menu Bar
+"menubar.updated" = "Mis à jour %@";
+"menubar.just_now" = "à l'instant";
+"menubar.minutes_ago" = "il y a %d min";
+"menubar.hours_ago" = "il y a %d h";
+"menubar.refresh" = "Actualiser";
+"menubar.settings" = "Paramètres";
+"menubar.quit" = "Quitter DodoCount";
+
+// MARK: - Realtime Card
+"realtime.title" = "TEMPS RÉEL";
+"realtime.active_users" = "utilisateurs actifs";
+
+// MARK: - Goal Progress
+"goal.title" = "OBJECTIF QUOTIDIEN";
+"goal.progress" = "%d sur %d utilisateurs";
+"goal.achieved" = "Objectif atteint !";
+
+// MARK: - Alerts
+"alerts.title" = "ALERTES";
+"alerts.no_alerts" = "Aucune alerte";
+"alerts.spike" = "Pic de trafic ! %d utilisateurs";
+"alerts.drop" = "Chute du trafic ! %d utilisateurs";
+"alerts.goal_reached" = "Objectif quotidien atteint !";
+"alerts.threshold" = "Seuil : %d utilisateurs";
+
+// MARK: - Metrics
+"metrics.title" = "AUJOURD'HUI VS HIER";
+"metrics.users" = "Utilisateurs";
+"metrics.sessions" = "Sessions";
+"metrics.pageviews" = "Pages vues";
+"metrics.bounce_rate" = "Taux de rebond";
+"metrics.avg_duration" = "Durée moy.";
+"metrics.today" = "Aujourd'hui";
+"metrics.yesterday" = "Hier";
+
+// MARK: - Extended Metrics (28-Day)
+"extended.title" = "APERÇU 28 JOURS";
+"extended.users" = "Utilisateurs";
+"extended.sessions" = "Sessions";
+"extended.pageviews" = "Pages vues";
+"extended.avg_duration" = "Durée moy.";
+
+// MARK: - Top Pages
+"pages.title" = "PAGES POPULAIRES";
+"pages.views" = "%d vues";
+
+// MARK: - Traffic Sources
+"sources.title" = "SOURCES DE TRAFIC";
+
+// MARK: - Countries
+"countries.title" = "PAYS";
+
+// MARK: - Devices
+"devices.title" = "APPAREILS";
+"devices.desktop" = "Ordinateur";
+"devices.mobile" = "Mobile";
+"devices.tablet" = "Tablette";
+
+// MARK: - Search Console
+"search.title" = "SEARCH CONSOLE";
+"search.clicks" = "Clics";
+"search.impressions" = "Impressions";
+"search.ctr" = "CTR";
+"search.position" = "Position";
+"search.top_queries" = "REQUÊTES POPULAIRES";
+"search.select_site" = "Sélectionner";
+
+// MARK: - Settings
+"settings.title" = "Paramètres";
+"settings.general" = "Général";
+"settings.about" = "À propos";
+"settings.reset" = "Réinitialiser les paramètres";
+
+// MARK: - Settings - Google Cloud
+"settings.google_cloud" = "Google Cloud";
+"settings.client_id" = "ID client";
+"settings.client_id_hint" = "Entrez votre ID client OAuth depuis la Google Cloud Console";
+"settings.open_console" = "Ouvrir Google Cloud Console";
+
+// MARK: - Settings - Account
+"settings.account" = "Compte";
+"settings.connected" = "Connecté";
+"settings.not_connected" = "Non connecté";
+"settings.sign_in" = "Se connecter";
+"settings.disconnect" = "Déconnecter";
+"settings.sign_in_hint" = "Connectez-vous avec Google pour accéder à GA4 et Search Console";
+"settings.client_id_required" = "Entrez votre ID client ci-dessus pour activer la connexion";
+
+// MARK: - Settings - Property
+"settings.property" = "Propriété";
+"settings.selected_property" = "Propriété sélectionnée";
+
+// MARK: - Settings - Refresh Interval
+"settings.refresh_interval" = "Intervalle d'actualisation";
+"settings.interval_15s" = "15s";
+"settings.interval_30s" = "30s";
+"settings.interval_1m" = "1m";
+"settings.interval_5m" = "5m";
+
+// MARK: - Settings - Menubar Display
+"settings.menubar_display" = "Affichage barre de menus";
+"settings.display_icon_only" = "Icône seule";
+"settings.display_icon_number" = "Icône + Nombre";
+"settings.display_number_only" = "Nombre seul";
+
+// MARK: - Settings - Appearance
+"settings.appearance" = "Apparence";
+"settings.appearance_system" = "Système";
+"settings.appearance_light" = "Clair";
+"settings.appearance_dark" = "Sombre";
+
+// MARK: - Settings - Startup
+"settings.startup" = "Démarrage";
+"settings.launch_at_login" = "Lancer à l'ouverture de session";
+
+// MARK: - Share
+"share.copy_stats" = "Copier les stats";
+"share.quick" = "Stats rapides";
+"share.detailed" = "Stats détaillées";
+"share.slack" = "Format Slack";
+
+// MARK: - Errors
+"error.not_authenticated" = "Non authentifié. Veuillez vous connecter.";
+"error.api_failed" = "Échec de la récupération des données";
+"error.token_refresh" = "Échec du rafraîchissement du jeton. Veuillez vous reconnecter.";

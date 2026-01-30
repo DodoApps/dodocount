@@ -1,0 +1,138 @@
+/*
+  Localizable.strings
+  DodoCount - English (Base)
+*/
+
+// MARK: - App
+"app.name" = "DodoCount";
+"app.version" = "Version %@";
+"app.copyright" = "© 2026 DodoApps";
+"app.tagline" = "Your Google Analytics companion for macOS";
+"app.description" = "DodoCount is a beautiful menubar app that gives you instant access to your Google Analytics 4 and Search Console data. Monitor real-time visitors, track daily metrics, and stay on top of your website's performance — all from your menubar.";
+
+// MARK: - Menu Bar
+"menubar.updated" = "Updated %@";
+"menubar.just_now" = "just now";
+"menubar.minutes_ago" = "%dm ago";
+"menubar.hours_ago" = "%dh ago";
+"menubar.refresh" = "Refresh";
+"menubar.settings" = "Settings";
+"menubar.quit" = "Quit DodoCount";
+
+// MARK: - Realtime Card
+"realtime.title" = "REALTIME";
+"realtime.active_users" = "active users";
+
+// MARK: - Goal Progress
+"goal.title" = "DAILY GOAL";
+"goal.progress" = "%d of %d users";
+"goal.achieved" = "Goal achieved!";
+
+// MARK: - Alerts
+"alerts.title" = "ALERTS";
+"alerts.no_alerts" = "No alerts";
+"alerts.spike" = "Traffic spike! %d users";
+"alerts.drop" = "Traffic drop! %d users";
+"alerts.goal_reached" = "Daily goal reached!";
+"alerts.threshold" = "Threshold: %d users";
+
+// MARK: - Metrics
+"metrics.title" = "TODAY VS YESTERDAY";
+"metrics.users" = "Users";
+"metrics.sessions" = "Sessions";
+"metrics.pageviews" = "Pageviews";
+"metrics.bounce_rate" = "Bounce Rate";
+"metrics.avg_duration" = "Avg. Duration";
+"metrics.today" = "Today";
+"metrics.yesterday" = "Yesterday";
+
+// MARK: - Extended Metrics (28-Day)
+"extended.title" = "28-DAY OVERVIEW";
+"extended.users" = "Users";
+"extended.sessions" = "Sessions";
+"extended.pageviews" = "Pageviews";
+"extended.avg_duration" = "Avg. Duration";
+
+// MARK: - Top Pages
+"pages.title" = "TOP PAGES";
+"pages.views" = "%d views";
+
+// MARK: - Traffic Sources
+"sources.title" = "TRAFFIC SOURCES";
+
+// MARK: - Countries
+"countries.title" = "COUNTRIES";
+
+// MARK: - Devices
+"devices.title" = "DEVICES";
+"devices.desktop" = "Desktop";
+"devices.mobile" = "Mobile";
+"devices.tablet" = "Tablet";
+
+// MARK: - Search Console
+"search.title" = "SEARCH CONSOLE";
+"search.clicks" = "Clicks";
+"search.impressions" = "Impressions";
+"search.ctr" = "CTR";
+"search.position" = "Position";
+"search.top_queries" = "TOP QUERIES";
+"search.select_site" = "Select";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.general" = "General";
+"settings.about" = "About";
+"settings.reset" = "Reset settings";
+
+// MARK: - Settings - Google Cloud
+"settings.google_cloud" = "Google Cloud";
+"settings.client_id" = "Client ID";
+"settings.client_id_hint" = "Enter your OAuth Client ID from Google Cloud Console";
+"settings.open_console" = "Open Google Cloud Console";
+
+// MARK: - Settings - Account
+"settings.account" = "Account";
+"settings.connected" = "Connected";
+"settings.not_connected" = "Not connected";
+"settings.sign_in" = "Sign in";
+"settings.disconnect" = "Disconnect";
+"settings.sign_in_hint" = "Sign in with Google to connect GA4 & Search Console";
+"settings.client_id_required" = "Enter your Client ID above to enable sign in";
+
+// MARK: - Settings - Property
+"settings.property" = "Property";
+"settings.selected_property" = "Selected property";
+
+// MARK: - Settings - Refresh Interval
+"settings.refresh_interval" = "Refresh interval";
+"settings.interval_15s" = "15s";
+"settings.interval_30s" = "30s";
+"settings.interval_1m" = "1m";
+"settings.interval_5m" = "5m";
+
+// MARK: - Settings - Menubar Display
+"settings.menubar_display" = "Menubar display";
+"settings.display_icon_only" = "Icon only";
+"settings.display_icon_number" = "Icon + Number";
+"settings.display_number_only" = "Number only";
+
+// MARK: - Settings - Appearance
+"settings.appearance" = "Appearance";
+"settings.appearance_system" = "System";
+"settings.appearance_light" = "Light";
+"settings.appearance_dark" = "Dark";
+
+// MARK: - Settings - Startup
+"settings.startup" = "Startup";
+"settings.launch_at_login" = "Launch at login";
+
+// MARK: - Share
+"share.copy_stats" = "Copy stats";
+"share.quick" = "Quick stats";
+"share.detailed" = "Detailed stats";
+"share.slack" = "Slack format";
+
+// MARK: - Errors
+"error.not_authenticated" = "Not authenticated. Please sign in.";
+"error.api_failed" = "Failed to fetch data";
+"error.token_refresh" = "Failed to refresh access token. Please sign in again.";

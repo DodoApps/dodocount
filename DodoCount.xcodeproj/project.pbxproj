@@ -32,6 +32,8 @@
 		1A00004C0000000000000001 /* SearchConsoleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00004D0000000000000001 /* SearchConsoleService.swift */; };
 		1A00004E0000000000000001 /* ExtendedMetricsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00004F0000000000000001 /* ExtendedMetricsCard.swift */; };
 		1A0000500000000000000001 /* SearchConsoleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000510000000000000001 /* SearchConsoleCard.swift */; };
+		1A0000520000000000000001 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000530000000000000001 /* Localization.swift */; };
+		1A0000600000000000000001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000610000000000000001 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,12 @@
 		1A00004D0000000000000001 /* SearchConsoleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConsoleService.swift; sourceTree = "<group>"; };
 		1A00004F0000000000000001 /* ExtendedMetricsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedMetricsCard.swift; sourceTree = "<group>"; };
 		1A0000510000000000000001 /* SearchConsoleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConsoleCard.swift; sourceTree = "<group>"; };
+		1A0000530000000000000001 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		1A0000620000000000000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = DodoCount/Resources/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1A0000630000000000000001 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = DodoCount/Resources/tr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1A0000640000000000000001 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = DodoCount/Resources/de.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1A0000650000000000000001 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = DodoCount/Resources/fr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1A0000660000000000000001 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = DodoCount/Resources/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 				1A0000270000000000000001 /* Models */,
 				1A0000280000000000000001 /* Services */,
 				1A0000290000000000000001 /* Views */,
+				1A0000540000000000000001 /* Utilities */,
 				1A00002A0000000000000001 /* Resources */,
 			);
 			path = DodoCount;
@@ -141,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				1A0000200000000000000001 /* Assets.xcassets */,
+				1A0000610000000000000001 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -170,6 +180,14 @@
 				1A00001E0000000000000001 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		1A0000540000000000000001 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000530000000000000001 /* Localization.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +232,10 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
+				de,
+				fr,
+				es,
 			);
 			mainGroup = 1A0000240000000000000001;
 			productRefGroup = 1A0000260000000000000001 /* Products */;
@@ -231,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A00001F0000000000000001 /* Assets.xcassets in Resources */,
+				1A0000600000000000000001 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +288,26 @@
 				1A00004C0000000000000001 /* SearchConsoleService.swift in Sources */,
 				1A00004E0000000000000001 /* ExtendedMetricsCard.swift in Sources */,
 				1A0000500000000000000001 /* SearchConsoleCard.swift in Sources */,
+				1A0000520000000000000001 /* Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1A0000610000000000000001 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A0000620000000000000001 /* en */,
+				1A0000630000000000000001 /* tr */,
+				1A0000640000000000000001 /* de */,
+				1A0000650000000000000001 /* fr */,
+				1A0000660000000000000001 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1A0000330000000000000001 /* Debug */ = {

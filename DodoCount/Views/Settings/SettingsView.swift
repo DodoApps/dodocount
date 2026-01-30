@@ -15,14 +15,14 @@ struct SettingsView: View {
                     .font(.system(size: 20))
                     .foregroundColor(.secondary)
 
-                Text("Settings")
+                Text(L10n.Settings.title)
                     .font(.system(size: 16, weight: .semibold))
 
                 Spacer()
 
                 Picker("", selection: $selectedTab) {
-                    Text("General").tag(0)
-                    Text("About").tag(1)
+                    Text(L10n.Settings.general).tag(0)
+                    Text(L10n.Settings.about).tag(1)
                 }
                 .pickerStyle(.segmented)
                 .frame(width: 160)
@@ -48,7 +48,7 @@ struct SettingsView: View {
 
                 Spacer()
 
-                Button("Reset settings") {
+                Button(L10n.Settings.reset) {
                     settingsManager.reset()
                 }
                 .font(.system(size: 11))
@@ -68,13 +68,13 @@ struct SettingsView: View {
         ScrollView {
             VStack(spacing: 20) {
                 // Google Cloud Configuration
-                SettingsSection(title: "Google Cloud") {
+                SettingsSection(title: L10n.Settings.googleCloud) {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Enter your OAuth Client ID from Google Cloud Console")
+                        Text(L10n.Settings.clientIdHint)
                             .font(.system(size: 11))
                             .foregroundColor(.secondary)
 
-                        TextField("Client ID", text: $settingsManager.settings.googleClientId)
+                        TextField(L10n.Settings.clientId, text: $settingsManager.settings.googleClientId)
                             .textFieldStyle(.roundedBorder)
                             .font(.system(size: 12))
 
@@ -82,7 +82,7 @@ struct SettingsView: View {
                             HStack(spacing: 4) {
                                 Image(systemName: "arrow.up.right.square")
                                     .font(.system(size: 10))
-                                Text("Open Google Cloud Console")
+                                Text(L10n.Settings.openConsole)
                                     .font(.system(size: 11))
                             }
                         }
@@ -91,7 +91,7 @@ struct SettingsView: View {
                 }
 
                 // Account section
-                SettingsSection(title: "Account") {
+                SettingsSection(title: L10n.Settings.account) {
                     VStack(alignment: .leading, spacing: 12) {
                         if authService.isAuthenticated {
                             // Connected state
@@ -107,7 +107,7 @@ struct SettingsView: View {
                                 }
 
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("Connected")
+                                    Text(L10n.Settings.connected)
                                         .font(.system(size: 13, weight: .medium))
                                         .foregroundColor(.green)
 
@@ -120,7 +120,7 @@ struct SettingsView: View {
 
                                 Spacer()
 
-                                Button("Disconnect") {
+                                Button(L10n.Settings.disconnect) {
                                     authService.signOut()
                                     analyticsService.refreshData()
                                 }
@@ -135,10 +135,10 @@ struct SettingsView: View {
                                     .foregroundColor(.secondary)
 
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("Not connected")
+                                    Text(L10n.Settings.notConnected)
                                         .font(.system(size: 13, weight: .medium))
 
-                                    Text("Sign in with Google to connect GA4 & Search Console")
+                                    Text(L10n.Settings.signInHint)
                                         .font(.system(size: 11))
                                         .foregroundColor(.secondary)
                                 }
@@ -156,7 +156,7 @@ struct SettingsView: View {
                                         HStack(spacing: 6) {
                                             Image(systemName: "g.circle.fill")
                                                 .font(.system(size: 14))
-                                            Text("Sign in")
+                                            Text(L10n.Settings.signIn)
                                         }
                                     }
                                     .buttonStyle(.borderedProminent)
@@ -172,7 +172,7 @@ struct SettingsView: View {
                                         .foregroundColor(.blue)
                                         .font(.system(size: 12))
 
-                                    Text("Enter your Client ID above to enable sign in")
+                                    Text(L10n.Settings.clientIdRequired)
                                         .font(.system(size: 11))
                                         .foregroundColor(.blue)
                                 }
@@ -197,8 +197,8 @@ struct SettingsView: View {
                 }
 
                 // Property section
-                SettingsSection(title: "Property") {
-                    Picker("Selected property", selection: Binding(
+                SettingsSection(title: L10n.Settings.property) {
+                    Picker(L10n.Settings.selectedProperty, selection: Binding(
                         get: { analyticsService.selectedProperty?.id ?? "" },
                         set: { newId in
                             if let property = analyticsService.properties.first(where: { $0.id == newId }) {
@@ -214,8 +214,8 @@ struct SettingsView: View {
                 }
 
                 // Refresh interval section
-                SettingsSection(title: "Refresh interval") {
-                    Picker("Refresh interval", selection: $settingsManager.settings.refreshInterval) {
+                SettingsSection(title: L10n.Settings.refreshInterval) {
+                    Picker(L10n.Settings.refreshInterval, selection: $settingsManager.settings.refreshInterval) {
                         ForEach(RefreshInterval.allCases, id: \.self) { interval in
                             Text(interval.displayName).tag(interval)
                         }
@@ -227,8 +227,8 @@ struct SettingsView: View {
                 }
 
                 // Menubar display section
-                SettingsSection(title: "Menubar display") {
-                    Picker("Display mode", selection: $settingsManager.settings.menubarDisplayMode) {
+                SettingsSection(title: L10n.Settings.menubarDisplay) {
+                    Picker(L10n.Settings.menubarDisplay, selection: $settingsManager.settings.menubarDisplayMode) {
                         ForEach(MenubarDisplayMode.allCases, id: \.self) { mode in
                             Text(mode.displayName).tag(mode)
                         }
@@ -237,8 +237,8 @@ struct SettingsView: View {
                 }
 
                 // Appearance section
-                SettingsSection(title: "Appearance") {
-                    Picker("Appearance", selection: $settingsManager.settings.appearanceMode) {
+                SettingsSection(title: L10n.Settings.appearance) {
+                    Picker(L10n.Settings.appearance, selection: $settingsManager.settings.appearanceMode) {
                         ForEach(AppearanceMode.allCases, id: \.self) { mode in
                             Label(mode.rawValue, systemImage: mode.icon).tag(mode)
                         }
@@ -247,8 +247,8 @@ struct SettingsView: View {
                 }
 
                 // Launch at login section
-                SettingsSection(title: "Startup") {
-                    Toggle("Launch at login", isOn: $settingsManager.settings.launchAtLogin)
+                SettingsSection(title: L10n.Settings.startup) {
+                    Toggle(L10n.Settings.launchAtLogin, isOn: $settingsManager.settings.launchAtLogin)
                         .onChange(of: settingsManager.settings.launchAtLogin) { _, newValue in
                             setLaunchAtLogin(newValue)
                         }
@@ -292,20 +292,20 @@ struct SettingsView: View {
                 }
 
                 // App name
-                Text("DodoCount")
+                Text(L10n.App.name)
                     .font(.system(size: 24, weight: .bold))
 
                 // Version
-                Text("Version 1.0.0")
+                Text(L10n.App.version("1.0.0"))
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
 
                 // Description
                 VStack(spacing: 12) {
-                    Text("Your Google Analytics companion for macOS")
+                    Text(L10n.App.tagline)
                         .font(.system(size: 14, weight: .medium))
 
-                    Text("DodoCount is a beautiful menubar app that gives you instant access to your Google Analytics 4 and Search Console data. Monitor real-time visitors, track daily metrics, and stay on top of your website's performance — all from your menubar.")
+                    Text(L10n.App.description)
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -315,7 +315,7 @@ struct SettingsView: View {
                 .padding(.top, 8)
 
                 // Copyright
-                Text("© 2026 DodoApps")
+                Text(L10n.App.copyright)
                     .font(.system(size: 11))
                     .foregroundColor(.secondary)
                     .padding(.top, 20)

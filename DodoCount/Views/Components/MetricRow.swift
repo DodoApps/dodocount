@@ -72,7 +72,7 @@ struct MetricsSection: View {
         VStack(spacing: 0) {
             // Section header
             HStack {
-                Text("TODAY VS YESTERDAY")
+                Text(L10n.Metrics.title)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.secondary.opacity(0.6))
                     .tracking(0.5)
@@ -86,32 +86,32 @@ struct MetricsSection: View {
             // Metrics
             VStack(spacing: 2) {
                 MetricRow(
-                    label: "Users",
+                    label: L10n.Metrics.users,
                     value: AnalyticsService.formatNumber(daily.users.today),
                     comparison: daily.users
                 )
 
                 MetricRow(
-                    label: "Sessions",
+                    label: L10n.Metrics.sessions,
                     value: AnalyticsService.formatNumber(daily.sessions.today),
                     comparison: daily.sessions
                 )
 
                 MetricRow(
-                    label: "Pageviews",
+                    label: L10n.Metrics.pageviews,
                     value: AnalyticsService.formatNumber(daily.pageviews.today),
                     comparison: daily.pageviews
                 )
 
                 MetricRow(
-                    label: "Bounce rate",
+                    label: L10n.Metrics.bounceRate,
                     value: AnalyticsService.formatPercentage(daily.bounceRate.today),
                     comparison: daily.bounceRate,
                     isInverted: true
                 )
 
                 MetricRow(
-                    label: "Avg. duration",
+                    label: L10n.Metrics.avgDuration,
                     value: AnalyticsService.formatDuration(daily.avgSessionDuration.today),
                     comparison: daily.avgSessionDuration
                 )

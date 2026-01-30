@@ -7,14 +7,14 @@ struct TopPagesCard: View {
         VStack(alignment: .leading, spacing: 0) {
             // Section header
             HStack {
-                Text("TOP PAGES")
+                Text(L10n.Pages.title)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.secondary.opacity(0.6))
                     .tracking(0.5)
 
                 Spacer()
 
-                Text("Views")
+                Text(L10n.Metrics.pageviews)
                     .font(.system(size: 10))
                     .foregroundColor(.secondary.opacity(0.5))
             }

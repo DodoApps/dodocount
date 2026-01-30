@@ -9,7 +9,7 @@ struct SourcesCard: View {
         VStack(alignment: .leading, spacing: 0) {
             // Section header
             HStack {
-                Text("TRAFFIC SOURCES")
+                Text(L10n.Sources.title)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.secondary.opacity(0.6))
                     .tracking(0.5)

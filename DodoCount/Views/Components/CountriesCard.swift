@@ -6,7 +6,7 @@ struct CountriesCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             // Section header
-            Text("TOP COUNTRIES")
+            Text(L10n.Countries.title)
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundColor(.secondary.opacity(0.6))
                 .tracking(0.5)

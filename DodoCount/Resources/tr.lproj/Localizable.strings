@@ -1,0 +1,138 @@
+/*
+  Localizable.strings
+  DodoCount - Turkish (Türkçe)
+*/
+
+// MARK: - App
+"app.name" = "DodoCount";
+"app.version" = "Sürüm %@";
+"app.copyright" = "© 2026 DodoApps";
+"app.tagline" = "macOS için Google Analytics yardımcınız";
+"app.description" = "DodoCount, Google Analytics 4 ve Search Console verilerinize anında erişim sağlayan şık bir menü çubuğu uygulamasıdır. Gerçek zamanlı ziyaretçileri izleyin, günlük metrikleri takip edin ve web sitenizin performansını menü çubuğunuzdan kontrol edin.";
+
+// MARK: - Menu Bar
+"menubar.updated" = "%@ güncellendi";
+"menubar.just_now" = "az önce";
+"menubar.minutes_ago" = "%dd önce";
+"menubar.hours_ago" = "%ds önce";
+"menubar.refresh" = "Yenile";
+"menubar.settings" = "Ayarlar";
+"menubar.quit" = "DodoCount'tan Çık";
+
+// MARK: - Realtime Card
+"realtime.title" = "CANLI";
+"realtime.active_users" = "aktif kullanıcı";
+
+// MARK: - Goal Progress
+"goal.title" = "GÜNLÜK HEDEF";
+"goal.progress" = "%d / %d kullanıcı";
+"goal.achieved" = "Hedefe ulaşıldı!";
+
+// MARK: - Alerts
+"alerts.title" = "UYARILAR";
+"alerts.no_alerts" = "Uyarı yok";
+"alerts.spike" = "Trafik artışı! %d kullanıcı";
+"alerts.drop" = "Trafik düşüşü! %d kullanıcı";
+"alerts.goal_reached" = "Günlük hedefe ulaşıldı!";
+"alerts.threshold" = "Eşik: %d kullanıcı";
+
+// MARK: - Metrics
+"metrics.title" = "BUGÜN - DÜN";
+"metrics.users" = "Kullanıcılar";
+"metrics.sessions" = "Oturumlar";
+"metrics.pageviews" = "Sayfa Görüntüleme";
+"metrics.bounce_rate" = "Hemen Çıkma Oranı";
+"metrics.avg_duration" = "Ort. Süre";
+"metrics.today" = "Bugün";
+"metrics.yesterday" = "Dün";
+
+// MARK: - Extended Metrics (28-Day)
+"extended.title" = "28 GÜNLÜK ÖZET";
+"extended.users" = "Kullanıcılar";
+"extended.sessions" = "Oturumlar";
+"extended.pageviews" = "Sayfa Görüntüleme";
+"extended.avg_duration" = "Ort. Süre";
+
+// MARK: - Top Pages
+"pages.title" = "EN ÇOK ZİYARET EDİLEN";
+"pages.views" = "%d görüntüleme";
+
+// MARK: - Traffic Sources
+"sources.title" = "TRAFİK KAYNAKLARI";
+
+// MARK: - Countries
+"countries.title" = "ÜLKELER";
+
+// MARK: - Devices
+"devices.title" = "CİHAZLAR";
+"devices.desktop" = "Masaüstü";
+"devices.mobile" = "Mobil";
+"devices.tablet" = "Tablet";
+
+// MARK: - Search Console
+"search.title" = "SEARCH CONSOLE";
+"search.clicks" = "Tıklamalar";
+"search.impressions" = "Gösterimler";
+"search.ctr" = "TO";
+"search.position" = "Konum";
+"search.top_queries" = "EN ÇOK ARANAN";
+"search.select_site" = "Seç";
+
+// MARK: - Settings
+"settings.title" = "Ayarlar";
+"settings.general" = "Genel";
+"settings.about" = "Hakkında";
+"settings.reset" = "Ayarları sıfırla";
+
+// MARK: - Settings - Google Cloud
+"settings.google_cloud" = "Google Cloud";
+"settings.client_id" = "İstemci Kimliği";
+"settings.client_id_hint" = "Google Cloud Console'dan OAuth İstemci Kimliğinizi girin";
+"settings.open_console" = "Google Cloud Console'u Aç";
+
+// MARK: - Settings - Account
+"settings.account" = "Hesap";
+"settings.connected" = "Bağlı";
+"settings.not_connected" = "Bağlı değil";
+"settings.sign_in" = "Giriş yap";
+"settings.disconnect" = "Bağlantıyı kes";
+"settings.sign_in_hint" = "GA4 ve Search Console'a bağlanmak için Google ile giriş yapın";
+"settings.client_id_required" = "Giriş yapmak için yukarıya İstemci Kimliğinizi girin";
+
+// MARK: - Settings - Property
+"settings.property" = "Mülk";
+"settings.selected_property" = "Seçili mülk";
+
+// MARK: - Settings - Refresh Interval
+"settings.refresh_interval" = "Yenileme aralığı";
+"settings.interval_15s" = "15sn";
+"settings.interval_30s" = "30sn";
+"settings.interval_1m" = "1dk";
+"settings.interval_5m" = "5dk";
+
+// MARK: - Settings - Menubar Display
+"settings.menubar_display" = "Menü çubuğu görünümü";
+"settings.display_icon_only" = "Sadece simge";
+"settings.display_icon_number" = "Simge + Sayı";
+"settings.display_number_only" = "Sadece sayı";
+
+// MARK: - Settings - Appearance
+"settings.appearance" = "Görünüm";
+"settings.appearance_system" = "Sistem";
+"settings.appearance_light" = "Açık";
+"settings.appearance_dark" = "Koyu";
+
+// MARK: - Settings - Startup
+"settings.startup" = "Başlangıç";
+"settings.launch_at_login" = "Oturum açıldığında başlat";
+
+// MARK: - Share
+"share.copy_stats" = "İstatistikleri kopyala";
+"share.quick" = "Hızlı istatistikler";
+"share.detailed" = "Detaylı istatistikler";
+"share.slack" = "Slack formatı";
+
+// MARK: - Errors
+"error.not_authenticated" = "Kimlik doğrulanmadı. Lütfen giriş yapın.";
+"error.api_failed" = "Veri alınamadı";
+"error.token_refresh" = "Erişim jetonu yenilenemedi. Lütfen tekrar giriş yapın.";

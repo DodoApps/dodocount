@@ -21,7 +21,7 @@ struct RealtimeCard: View {
                                 .scaleEffect(1.5)
                         )
 
-                    Text("REALTIME")
+                    Text(L10n.Realtime.title)
                         .font(.system(size: 10, weight: .semibold))
                         .foregroundColor(.secondary)
                         .tracking(0.5)
@@ -42,7 +42,7 @@ struct RealtimeCard: View {
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
 
-                    Text("active users")
+                    Text(L10n.Realtime.activeUsers)
                         .font(.system(size: 11))
                         .foregroundColor(.secondary)
                 }

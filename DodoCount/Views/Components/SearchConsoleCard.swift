@@ -12,7 +12,7 @@ struct SearchConsoleCard: View {
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.purple)
 
-                Text("SEARCH CONSOLE")
+                Text(L10n.Search.title)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.secondary)
                     .tracking(0.5)
@@ -34,7 +34,7 @@ struct SearchConsoleCard: View {
                         }
                     } label: {
                         HStack(spacing: 4) {
-                            Text(searchConsole.selectedSite?.displayName ?? "Select")
+                            Text(searchConsole.selectedSite?.displayName ?? L10n.Search.selectSite)
                                 .font(.system(size: 10))
                                 .foregroundColor(.secondary)
                             Image(systemName: "chevron.down")
@@ -52,28 +52,28 @@ struct SearchConsoleCard: View {
                 GridItem(.flexible())
             ], spacing: 10) {
                 SearchMetricBox(
-                    label: "Clicks",
+                    label: L10n.Search.clicks,
                     value: formatNumber(searchConsole.metrics.clicks.today),
                     change: searchConsole.metrics.clicks.percentChange,
                     color: .purple
                 )
 
                 SearchMetricBox(
-                    label: "Impressions",
+                    label: L10n.Search.impressions,
                     value: formatNumber(searchConsole.metrics.impressions.today),
                     change: searchConsole.metrics.impressions.percentChange,
                     color: .cyan
                 )
 
                 SearchMetricBox(
-                    label: "CTR",
+                    label: L10n.Search.ctr,
                     value: String(format: "%.1f%%", searchConsole.metrics.ctr.today),
                     change: searchConsole.metrics.ctr.percentChange,
                     color: .green
                 )
 
                 SearchMetricBox(
-                    label: "Position",
+                    label: L10n.Search.position,
                     value: String(format: "%.1f", searchConsole.metrics.position.today),
                     change: -searchConsole.metrics.position.percentChange, // Lower is better
                     color: .orange,
@@ -92,7 +92,7 @@ struct SearchConsoleCard: View {
                 Divider()
                     .padding(.vertical, 4)
 
-                Text("TOP QUERIES")
+                Text(L10n.Search.topQueries)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.secondary)
                     .tracking(0.5)

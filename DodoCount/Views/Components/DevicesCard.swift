@@ -6,7 +6,7 @@ struct DevicesCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             // Section header
-            Text("DEVICES")
+            Text(L10n.Devices.title)
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundColor(.secondary.opacity(0.6))
                 .tracking(0.5)
@@ -16,19 +16,19 @@ struct DevicesCard: View {
             VStack(spacing: 4) {
                 DeviceRow(
                     icon: "desktopcomputer",
-                    label: "Desktop",
+                    label: L10n.Devices.desktop,
                     percentage: devices.desktop
                 )
 
                 DeviceRow(
                     icon: "iphone",
-                    label: "Mobile",
+                    label: L10n.Devices.mobile,
                     percentage: devices.mobile
                 )
 
                 DeviceRow(
                     icon: "ipad",
-                    label: "Tablet",
+                    label: L10n.Devices.tablet,
                     percentage: devices.tablet
                 )
             }
