@@ -32,9 +32,20 @@ A beautiful macOS menubar app for Google Analytics 4 and Search Console.
 
 ## Installation
 
+### Homebrew (Recommended)
+
+```bash
+brew tap DodoApps/tap
+brew install --cask dodocount
+xattr -cr /Applications/DodoCount.app
+```
+
+### Manual Download
+
 1. Download the latest release from [Releases](https://github.com/DodoApps/dodocount/releases)
 2. Move DodoCount.app to your Applications folder
-3. Launch DodoCount
+3. Run `xattr -cr /Applications/DodoCount.app` to remove quarantine
+4. Launch DodoCount
 
 ## Setup
 

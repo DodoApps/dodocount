@@ -32,9 +32,20 @@ Eine elegante macOS Menüleisten-App für Google Analytics 4 und Search Console.
 
 ## Installation
 
+### Homebrew (Empfohlen)
+
+```bash
+brew tap DodoApps/tap
+brew install --cask dodocount
+xattr -cr /Applications/DodoCount.app
+```
+
+### Manueller Download
+
 1. Laden Sie die neueste Version von [Releases](https://github.com/DodoApps/dodocount/releases) herunter
 2. Verschieben Sie DodoCount.app in Ihren Programme-Ordner
-3. Starten Sie DodoCount
+3. Führen Sie `xattr -cr /Applications/DodoCount.app` aus, um die Quarantäne zu entfernen
+4. Starten Sie DodoCount
 
 ## Einrichtung
 

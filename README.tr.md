@@ -32,9 +32,20 @@ macOS için şık bir Google Analytics 4 ve Search Console menü çubuğu uygula
 
 ## Kurulum
 
+### Homebrew (Önerilen)
+
+```bash
+brew tap DodoApps/tap
+brew install --cask dodocount
+xattr -cr /Applications/DodoCount.app
+```
+
+### Manuel İndirme
+
 1. En son sürümü [Releases](https://github.com/DodoApps/dodocount/releases) sayfasından indirin
 2. DodoCount.app dosyasını Uygulamalar klasörüne taşıyın
-3. DodoCount'u başlatın
+3. Karantinayı kaldırmak için `xattr -cr /Applications/DodoCount.app` komutunu çalıştırın
+4. DodoCount'u başlatın
 
 ## Yapılandırma
 

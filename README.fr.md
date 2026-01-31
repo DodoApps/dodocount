@@ -32,9 +32,20 @@ Une élégante application de barre de menus macOS pour Google Analytics 4 et Se
 
 ## Installation
 
+### Homebrew (Recommandé)
+
+```bash
+brew tap DodoApps/tap
+brew install --cask dodocount
+xattr -cr /Applications/DodoCount.app
+```
+
+### Téléchargement Manuel
+
 1. Téléchargez la dernière version depuis [Releases](https://github.com/DodoApps/dodocount/releases)
 2. Déplacez DodoCount.app dans votre dossier Applications
-3. Lancez DodoCount
+3. Exécutez `xattr -cr /Applications/DodoCount.app` pour supprimer la quarantaine
+4. Lancez DodoCount
 
 ## Configuration
 
