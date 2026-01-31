@@ -1,12 +1,22 @@
-# DodoCount
+<p align="center">
+  <img src="dodocount.png" alt="DodoCount" width="200" />
+</p>
 
-Eine elegante macOS Menüleisten-App für Google Analytics 4 und Search Console.
+<h1 align="center">DodoCount</h1>
 
-![macOS](https://img.shields.io/badge/macOS-14.0+-blue)
-![Swift](https://img.shields.io/badge/Swift-5.0-orange)
-![License](https://img.shields.io/badge/Lizenz-MIT-green)
+<p align="center">
+  Eine elegante macOS Menüleisten-App für Google Analytics 4 und Search Console.
+</p>
 
-🌐 **Übersetzungen:** [English](README.md) | [Türkçe](README.tr.md) | [Français](README.fr.md) | [Español](README.es.md)
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14.0+-blue" alt="macOS" />
+  <img src="https://img.shields.io/badge/Swift-5.0-orange" alt="Swift" />
+  <img src="https://img.shields.io/badge/Lizenz-MIT-green" alt="License" />
+</p>
+
+<p align="center">
+  🌐 <strong>Übersetzungen:</strong> <a href="README.md">English</a> | <a href="README.tr.md">Türkçe</a> | <a href="README.fr.md">Français</a> | <a href="README.es.md">Español</a>
+</p>
 
 ## Funktionen
 

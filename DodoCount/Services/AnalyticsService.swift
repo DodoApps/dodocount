@@ -252,17 +252,18 @@ class AnalyticsService: ObservableObject {
         // Date formatter
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 
-        // Current 28-day period
+        // Fetch 90 days for dashboard flexibility
         let calendar = Calendar.current
         guard let endDate = calendar.date(byAdding: .day, value: -1, to: Date()),
-              let startDate = calendar.date(byAdding: .day, value: -28, to: endDate),
+              let startDate = calendar.date(byAdding: .day, value: -90, to: endDate),
               let prevEndDate = calendar.date(byAdding: .day, value: -1, to: startDate),
-              let prevStartDate = calendar.date(byAdding: .day, value: -28, to: prevEndDate) else {
+              let prevStartDate = calendar.date(byAdding: .day, value: -90, to: prevEndDate) else {
             throw AnalyticsError.apiError("Failed to calculate date range")
         }
 
-        // Fetch current period with daily breakdown
+        // Fetch current period with daily breakdown (single date range for trend)
         guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
             throw AnalyticsError.apiError("Invalid URL")
         }
@@ -271,70 +272,93 @@ class AnalyticsService: ObservableObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let body: [String: Any] = [
+        // First request: Get daily trend data for current period
+        let trendBody: [String: Any] = [
             "dateRanges": [
-                ["startDate": dateFormatter.string(from: startDate), "endDate": dateFormatter.string(from: endDate)],
-                ["startDate": dateFormatter.string(from: prevStartDate), "endDate": dateFormatter.string(from: prevEndDate)]
+                ["startDate": dateFormatter.string(from: startDate), "endDate": dateFormatter.string(from: endDate)]
             ],
             "dimensions": [["name": "date"]],
             "metrics": [
-                ["name": "active28DayUsers"],
+                ["name": "activeUsers"],
                 ["name": "eventCount"],
                 ["name": "screenPageViews"]
             ],
-            "orderBys": [["dimension": ["dimensionName": "date"]]]
+            "orderBys": [["dimension": ["dimensionName": "date"], "desc": false]]
         ]
-        request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        request.httpBody = try JSONSerialization.data(withJSONObject: trendBody)
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (trendData, trendResponse) = try await URLSession.shared.data(for: request)
 
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw AnalyticsError.apiError("Failed to fetch extended metrics")
+        guard let trendHttpResponse = trendResponse as? HTTPURLResponse, trendHttpResponse.statusCode == 200 else {
+            throw AnalyticsError.apiError("Failed to fetch trend data")
         }
 
-        let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-        let rows = json?["rows"] as? [[String: Any]] ?? []
+        let trendJson = try JSONSerialization.jsonObject(with: trendData) as? [String: Any]
+        let trendRows = trendJson?["rows"] as? [[String: Any]] ?? []
 
-        // Aggregate current and previous period
+        // Parse trend data
         var currentUsers = 0.0
         var currentEvents = 0.0
         var currentPageviews = 0.0
-        var prevUsers = 0.0
-        var prevEvents = 0.0
-        var prevPageviews = 0.0
-        var trendData: [TrendDataPoint] = []
+        var trendPoints: [TrendDataPoint] = []
 
-        for row in rows {
+        // GA4 returns dates in YYYYMMDD format
+        let ga4DateFormatter = DateFormatter()
+        ga4DateFormatter.dateFormat = "yyyyMMdd"
+        ga4DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        for row in trendRows {
             let dimensionValues = row["dimensionValues"] as? [[String: Any]] ?? []
             let metricValues = row["metricValues"] as? [[String: Any]] ?? []
 
-            // GA4 API returns date in first dimension, dateRange indicator may be separate
             let dateStr = dimensionValues.first?["value"] as? String ?? ""
-
             let users = Double(metricValues[safe: 0]?["value"] as? String ?? "0") ?? 0
             let events = Double(metricValues[safe: 1]?["value"] as? String ?? "0") ?? 0
             let pageviews = Double(metricValues[safe: 2]?["value"] as? String ?? "0") ?? 0
 
-            // Check if date is in current period (last 28 days) or previous period
-            if let date = dateFormatter.date(from: dateStr) {
-                if date >= startDate && date <= endDate {
-                    currentUsers += users
-                    currentEvents += events
-                    currentPageviews += pageviews
-                    trendData.append(TrendDataPoint(date: date, value: users, previousValue: nil))
-                } else if date >= prevStartDate && date <= prevEndDate {
-                    prevUsers += users
-                    prevEvents += events
-                    prevPageviews += pageviews
-                }
+            currentUsers += users
+            currentEvents += events
+            currentPageviews += pageviews
+
+            if let date = ga4DateFormatter.date(from: dateStr) {
+                trendPoints.append(TrendDataPoint(date: date, value: users, previousValue: nil))
             }
+        }
+
+        // Second request: Get totals for previous period
+        let prevBody: [String: Any] = [
+            "dateRanges": [
+                ["startDate": dateFormatter.string(from: prevStartDate), "endDate": dateFormatter.string(from: prevEndDate)]
+            ],
+            "metrics": [
+                ["name": "activeUsers"],
+                ["name": "eventCount"],
+                ["name": "screenPageViews"]
+            ]
+        ]
+        request.httpBody = try JSONSerialization.data(withJSONObject: prevBody)
+
+        let (prevData, prevResponse) = try await URLSession.shared.data(for: request)
+
+        var prevUsers = 0.0
+        var prevEvents = 0.0
+        var prevPageviews = 0.0
+
+        if let prevHttpResponse = prevResponse as? HTTPURLResponse, prevHttpResponse.statusCode == 200,
+           let prevJson = try JSONSerialization.jsonObject(with: prevData) as? [String: Any],
+           let prevRows = prevJson["rows"] as? [[String: Any]],
+           let firstRow = prevRows.first {
+            let metricValues = firstRow["metricValues"] as? [[String: Any]] ?? []
+            prevUsers = Double(metricValues[safe: 0]?["value"] as? String ?? "0") ?? 0
+            prevEvents = Double(metricValues[safe: 1]?["value"] as? String ?? "0") ?? 0
+            prevPageviews = Double(metricValues[safe: 2]?["value"] as? String ?? "0") ?? 0
         }
 
         return ExtendedMetrics(
             activeUsers28Day: MetricComparison(today: currentUsers, yesterday: prevUsers),
             eventCount: MetricComparison(today: currentEvents, yesterday: prevEvents),
             pageviews: MetricComparison(today: currentPageviews, yesterday: prevPageviews),
-            trendData: trendData.sorted { $0.date < $1.date }
+            trendData: trendPoints.sorted { $0.date < $1.date }
         )
     }
 
@@ -411,11 +435,12 @@ class AnalyticsService: ObservableObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        // Fetch 90 days of data for dashboard flexibility
         let body: [String: Any] = [
-            "dateRanges": [["startDate": "today", "endDate": "today"]],
+            "dateRanges": [["startDate": "90daysAgo", "endDate": "yesterday"]],
             "dimensions": [["name": "pagePath"], ["name": "pageTitle"]],
             "metrics": [["name": "screenPageViews"]],
-            "limit": 5,
+            "limit": 100,
             "orderBys": [["metric": ["metricName": "screenPageViews"], "desc": true]]
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
@@ -454,11 +479,12 @@ class AnalyticsService: ObservableObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        // Fetch 90 days for dashboard flexibility
         let body: [String: Any] = [
-            "dateRanges": [["startDate": "today", "endDate": "today"]],
+            "dateRanges": [["startDate": "90daysAgo", "endDate": "yesterday"]],
             "dimensions": [["name": "sessionSource"], ["name": "sessionMedium"]],
             "metrics": [["name": "sessions"]],
-            "limit": 5,
+            "limit": 50,
             "orderBys": [["metric": ["metricName": "sessions"], "desc": true]]
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
@@ -505,11 +531,12 @@ class AnalyticsService: ObservableObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        // Fetch 90 days for dashboard flexibility
         let body: [String: Any] = [
-            "dateRanges": [["startDate": "today", "endDate": "today"]],
+            "dateRanges": [["startDate": "90daysAgo", "endDate": "yesterday"]],
             "dimensions": [["name": "country"], ["name": "countryId"]],
             "metrics": [["name": "activeUsers"]],
-            "limit": 5,
+            "limit": 50,
             "orderBys": [["metric": ["metricName": "activeUsers"], "desc": true]]
         ]
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
@@ -556,8 +583,9 @@ class AnalyticsService: ObservableObject {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        // Fetch 90 days for dashboard flexibility
         let body: [String: Any] = [
-            "dateRanges": [["startDate": "today", "endDate": "today"]],
+            "dateRanges": [["startDate": "90daysAgo", "endDate": "yesterday"]],
             "dimensions": [["name": "deviceCategory"]],
             "metrics": [["name": "activeUsers"]]
         ]

@@ -274,28 +274,12 @@ struct SettingsView: View {
 
             VStack(spacing: 20) {
                 // App icon
-                ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [Color.green.opacity(0.3), Color.teal.opacity(0.2)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 80, height: 80)
-                        .blur(radius: 8)
-
-                    Image(systemName: "chart.line.uptrend.xyaxis")
-                        .font(.system(size: 40, weight: .semibold))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [Color.green, Color.teal],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                }
+                Image("AppLogo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
 
                 // App name
                 Text(L10n.App.name)

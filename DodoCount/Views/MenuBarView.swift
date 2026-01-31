@@ -133,6 +133,11 @@ struct MenuBarView: View {
 
             Spacer()
 
+            // Dashboard button
+            HeaderButton(icon: "rectangle.expand.vertical", tooltip: "Open Dashboard") {
+                openDashboard()
+            }
+
             // Refresh button
             HeaderButton(icon: "arrow.clockwise", tooltip: "Refresh") {
                 analyticsService.refreshData()
@@ -211,6 +216,10 @@ struct MenuBarView: View {
 
     private func openSettings() {
         NSApp.sendAction(#selector(AppDelegate.openSettingsWindow), to: nil, from: nil)
+    }
+
+    private func openDashboard() {
+        NSApp.sendAction(#selector(AppDelegate.openDashboardWindow), to: nil, from: nil)
     }
 }
 

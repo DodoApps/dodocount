@@ -1,12 +1,22 @@
-# DodoCount
+<p align="center">
+  <img src="dodocount.png" alt="DodoCount" width="200" />
+</p>
 
-macOS için şık bir Google Analytics 4 ve Search Console menü çubuğu uygulaması.
+<h1 align="center">DodoCount</h1>
 
-![macOS](https://img.shields.io/badge/macOS-14.0+-blue)
-![Swift](https://img.shields.io/badge/Swift-5.0-orange)
-![License](https://img.shields.io/badge/Lisans-MIT-green)
+<p align="center">
+  macOS için şık bir Google Analytics 4 ve Search Console menü çubuğu uygulaması.
+</p>
 
-🌐 **Çeviriler:** [English](README.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Español](README.es.md)
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14.0+-blue" alt="macOS" />
+  <img src="https://img.shields.io/badge/Swift-5.0-orange" alt="Swift" />
+  <img src="https://img.shields.io/badge/Lisans-MIT-green" alt="License" />
+</p>
+
+<p align="center">
+  🌐 <strong>Çeviriler:</strong> <a href="README.md">English</a> | <a href="README.de.md">Deutsch</a> | <a href="README.fr.md">Français</a> | <a href="README.es.md">Español</a>
+</p>
 
 ## Özellikler
 

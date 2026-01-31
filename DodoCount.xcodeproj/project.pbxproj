@@ -35,6 +35,12 @@
 		1A0000520000000000000001 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000530000000000000001 /* Localization.swift */; };
 		1A0000560000000000000001 /* DateUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000550000000000000001 /* DateUtilities.swift */; };
 		1A0000600000000000000001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000610000000000000001 /* Localizable.strings */; };
+		1A0000700000000000000001 /* DashboardWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000710000000000000001 /* DashboardWindow.swift */; };
+		1A0000720000000000000001 /* OverviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000730000000000000001 /* OverviewSection.swift */; };
+		1A0000740000000000000001 /* TrafficSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000750000000000000001 /* TrafficSection.swift */; };
+		1A0000760000000000000001 /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000770000000000000001 /* SearchSection.swift */; };
+		1A0000780000000000000001 /* PagesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000790000000000000001 /* PagesSection.swift */; };
+		1A00007A0000000000000001 /* AudienceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00007B0000000000000001 /* AudienceSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +78,12 @@
 		1A0000640000000000000001 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = DodoCount/Resources/de.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		1A0000650000000000000001 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = DodoCount/Resources/fr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		1A0000660000000000000001 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = DodoCount/Resources/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		1A0000710000000000000001 /* DashboardWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWindow.swift; sourceTree = "<group>"; };
+		1A0000730000000000000001 /* OverviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSection.swift; sourceTree = "<group>"; };
+		1A0000750000000000000001 /* TrafficSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficSection.swift; sourceTree = "<group>"; };
+		1A0000770000000000000001 /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
+		1A0000790000000000000001 /* PagesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesSection.swift; sourceTree = "<group>"; };
+		1A00007B0000000000000001 /* AudienceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +156,30 @@
 				1A00001C0000000000000001 /* MenuBarView.swift */,
 				1A00002B0000000000000001 /* Components */,
 				1A00002C0000000000000001 /* Settings */,
+				1A00006D0000000000000001 /* Dashboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1A00006D0000000000000001 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000710000000000000001 /* DashboardWindow.swift */,
+				1A00006E0000000000000001 /* Sections */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		1A00006E0000000000000001 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000730000000000000001 /* OverviewSection.swift */,
+				1A0000750000000000000001 /* TrafficSection.swift */,
+				1A0000770000000000000001 /* SearchSection.swift */,
+				1A0000790000000000000001 /* PagesSection.swift */,
+				1A00007B0000000000000001 /* AudienceSection.swift */,
+			);
+			path = Sections;
 			sourceTree = "<group>";
 		};
 		1A00002A0000000000000001 /* Resources */ = {
@@ -293,6 +327,12 @@
 				1A0000500000000000000001 /* SearchConsoleCard.swift in Sources */,
 				1A0000520000000000000001 /* Localization.swift in Sources */,
 				1A0000560000000000000001 /* DateUtilities.swift in Sources */,
+				1A0000700000000000000001 /* DashboardWindow.swift in Sources */,
+				1A0000720000000000000001 /* OverviewSection.swift in Sources */,
+				1A0000740000000000000001 /* TrafficSection.swift in Sources */,
+				1A0000760000000000000001 /* SearchSection.swift in Sources */,
+				1A0000780000000000000001 /* PagesSection.swift in Sources */,
+				1A00007A0000000000000001 /* AudienceSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

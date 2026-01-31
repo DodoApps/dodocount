@@ -1,12 +1,22 @@
-# DodoCount
+<p align="center">
+  <img src="dodocount.png" alt="DodoCount" width="200" />
+</p>
 
-A beautiful macOS menubar app for Google Analytics 4 and Search Console.
+<h1 align="center">DodoCount</h1>
 
-![macOS](https://img.shields.io/badge/macOS-14.0+-blue)
-![Swift](https://img.shields.io/badge/Swift-5.0-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+  A beautiful macOS menubar app for Google Analytics 4 and Search Console.
+</p>
 
-🌐 **Translations:** [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Español](README.es.md)
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14.0+-blue" alt="macOS" />
+  <img src="https://img.shields.io/badge/Swift-5.0-orange" alt="Swift" />
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License" />
+</p>
+
+<p align="center">
+  🌐 <strong>Translations:</strong> <a href="README.tr.md">Türkçe</a> | <a href="README.de.md">Deutsch</a> | <a href="README.fr.md">Français</a> | <a href="README.es.md">Español</a>
+</p>
 
 ## Features
 

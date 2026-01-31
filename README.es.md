@@ -1,12 +1,22 @@
-# DodoCount
+<p align="center">
+  <img src="dodocount.png" alt="DodoCount" width="200" />
+</p>
 
-Una elegante aplicación de barra de menús de macOS para Google Analytics 4 y Search Console.
+<h1 align="center">DodoCount</h1>
 
-![macOS](https://img.shields.io/badge/macOS-14.0+-blue)
-![Swift](https://img.shields.io/badge/Swift-5.0-orange)
-![License](https://img.shields.io/badge/Licencia-MIT-green)
+<p align="center">
+  Una elegante aplicación de barra de menús de macOS para Google Analytics 4 y Search Console.
+</p>
 
-🌐 **Traducciones:** [English](README.md) | [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14.0+-blue" alt="macOS" />
+  <img src="https://img.shields.io/badge/Swift-5.0-orange" alt="Swift" />
+  <img src="https://img.shields.io/badge/Licencia-MIT-green" alt="License" />
+</p>
+
+<p align="center">
+  🌐 <strong>Traducciones:</strong> <a href="README.md">English</a> | <a href="README.tr.md">Türkçe</a> | <a href="README.de.md">Deutsch</a> | <a href="README.fr.md">Français</a>
+</p>
 
 ## Características
 

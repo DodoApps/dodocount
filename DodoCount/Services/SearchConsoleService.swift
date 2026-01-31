@@ -325,7 +325,10 @@ class SearchConsoleService: ObservableObject {
         dimensions: [String],
         rowLimit: Int = 1000
     ) async throws -> [[String: Any]] {
-        let encodedSiteUrl = siteUrl.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? siteUrl
+        // URL encode the site URL properly - need to encode the entire URL including special chars
+        guard let encodedSiteUrl = siteUrl.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(CharacterSet(charactersIn: "-._~"))) else {
+            throw SearchConsoleError.apiError("Failed to encode site URL")
+        }
 
         guard let url = URL(string: "\(apiBase)/sites/\(encodedSiteUrl)/searchAnalytics/query") else {
             throw SearchConsoleError.apiError("Invalid URL")
@@ -350,7 +353,13 @@ class SearchConsoleService: ObservableObject {
         let (data, response) = try await URLSession.shared.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw SearchConsoleError.apiError("Failed to fetch search analytics")
+            // Try to get error details
+            if let errorJson = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let error = errorJson["error"] as? [String: Any],
+               let message = error["message"] as? String {
+                throw SearchConsoleError.apiError(message)
+            }
+            throw SearchConsoleError.apiError("Failed to fetch search analytics (HTTP \((response as? HTTPURLResponse)?.statusCode ?? 0))")
         }
 
         let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]

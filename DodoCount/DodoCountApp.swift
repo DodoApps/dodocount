@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private var analyticsService: AnalyticsService!
     private var alertService: AlertService!
     private var previousActiveUsers: Int = 0
+    private var lastClickTime: Date?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Initialize services (they handle their own auth-based data fetching)
@@ -142,7 +143,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if event.type == .rightMouseUp {
             showContextMenu()
         } else {
-            togglePopover()
+            // Check for double-click
+            let now = Date()
+            if let lastClick = lastClickTime, now.timeIntervalSince(lastClick) < 0.3 {
+                // Double-click: open dashboard
+                lastClickTime = nil
+                if popover.isShown {
+                    popover.performClose(nil)
+                }
+                openDashboardWindow()
+            } else {
+                // Single click: toggle popover
+                lastClickTime = now
+                togglePopover()
+            }
         }
     }
 
@@ -287,6 +301,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
         settingsWindow?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+
+    @objc func openDashboardWindow() {
+        // Close popover if open
+        if popover.isShown {
+            popover.performClose(nil)
+        }
+
+        // Open dashboard
+        DashboardWindowController.shared.show()
     }
 
     @objc private func quitApp() {
