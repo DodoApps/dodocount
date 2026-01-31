@@ -261,7 +261,20 @@ class GoogleAuthService: NSObject, ObservableObject {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AuthError.tokenRefreshFailed
+        }
+
+        // Handle non-200 responses
+        if httpResponse.statusCode != 200 {
+            // Try to parse error from Google
+            if let errorJson = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let errorDesc = errorJson["error_description"] as? String {
+                // Google returned an error - likely token revoked or expired
+                if errorDesc.contains("revoked") || errorDesc.contains("expired") || errorDesc.contains("invalid") {
+                    throw AuthError.tokenRevoked
+                }
+            }
             throw AuthError.tokenRefreshFailed
         }
 
@@ -386,6 +399,7 @@ enum AuthError: LocalizedError {
     case notAuthenticated
     case tokenExchangeFailed
     case tokenRefreshFailed
+    case tokenRevoked
 
     var errorDescription: String? {
         switch self {
@@ -394,7 +408,9 @@ enum AuthError: LocalizedError {
         case .tokenExchangeFailed:
             return "Failed to exchange authorization code for tokens."
         case .tokenRefreshFailed:
-            return "Failed to refresh access token. Please sign in again."
+            return "Session expired. Please sign in again."
+        case .tokenRevoked:
+            return "Access was revoked. Please sign in again."
         }
     }
 }
