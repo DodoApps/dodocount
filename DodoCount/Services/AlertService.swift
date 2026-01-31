@@ -129,6 +129,7 @@ class AlertService: ObservableObject {
         guard settings.showGoalProgress else { return }
 
         let goal = settings.dailyUserGoal
+        guard goal > 0 else { return } // Prevent division by zero
         let progress = Double(todayUsers) / Double(goal)
 
         // Alert at 50%, 100%, and 150%

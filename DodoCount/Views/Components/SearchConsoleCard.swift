@@ -67,14 +67,14 @@ struct SearchConsoleCard: View {
 
                 SearchMetricBox(
                     label: L10n.Search.ctr,
-                    value: String(format: "%.1f%%", searchConsole.metrics.ctr.today),
+                    value: searchConsole.metrics.ctr.today.isFinite ? String(format: "%.1f%%", searchConsole.metrics.ctr.today) : "0.0%",
                     change: searchConsole.metrics.ctr.percentChange,
                     color: .green
                 )
 
                 SearchMetricBox(
                     label: L10n.Search.position,
-                    value: String(format: "%.1f", searchConsole.metrics.position.today),
+                    value: searchConsole.metrics.position.today.isFinite ? String(format: "%.1f", searchConsole.metrics.position.today) : "0.0",
                     change: -searchConsole.metrics.position.percentChange, // Lower is better
                     color: .orange,
                     invertColor: true
@@ -122,6 +122,7 @@ struct SearchConsoleCard: View {
     }
 
     private func formatNumber(_ value: Double) -> String {
+        guard value.isFinite && value >= 0 else { return "0" }
         if value >= 1_000_000 {
             return String(format: "%.1fM", value / 1_000_000)
         } else if value >= 1_000 {
@@ -153,10 +154,10 @@ struct SearchMetricBox: View {
                 Image(systemName: change >= 0 ? "arrow.up" : "arrow.down")
                     .font(.system(size: 8, weight: .bold))
 
-                Text(String(format: "%.1f%%", abs(change)))
+                Text(change.isFinite ? String(format: "%.1f%%", abs(change)) : "0.0%")
                     .font(.system(size: 10, weight: .medium))
             }
-            .foregroundColor(changeColor)
+            .foregroundColor(change.isFinite ? changeColor : .secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(8)

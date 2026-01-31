@@ -125,14 +125,19 @@ struct CountryData: Identifiable {
     let percentage: Double
 
     var flag: String {
+        // Handle empty or invalid country codes
+        guard countryCode.count == 2 else { return "🌍" }
+
         let base: UInt32 = 127397
         var flag = ""
         for scalar in countryCode.uppercased().unicodeScalars {
+            // Only process ASCII letters (A-Z)
+            guard scalar.value >= 65 && scalar.value <= 90 else { return "🌍" }
             if let unicode = UnicodeScalar(base + scalar.value) {
                 flag.append(String(unicode))
             }
         }
-        return flag
+        return flag.isEmpty ? "🌍" : flag
     }
 }
 

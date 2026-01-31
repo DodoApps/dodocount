@@ -87,6 +87,7 @@ class ShareService {
     // MARK: - Helpers
 
     private func formatChange(_ value: Double) -> String {
+        guard value.isFinite else { return "+0.0%" }
         let sign = value >= 0 ? "+" : ""
         return String(format: "%@%.1f%%", sign, value)
     }

@@ -110,7 +110,15 @@ struct SparklineChart: View {
         .chartXAxis(.hidden)
         .chartYAxis(.hidden)
         .chartLegend(.hidden)
-        .chartYScale(domain: (data.min() ?? 0) - 10 ... (data.max() ?? 100) + 10)
+        .chartYScale(domain: {
+            let minVal = data.min() ?? 0
+            let maxVal = data.max() ?? 100
+            // Ensure valid range even when all values are the same
+            if minVal == maxVal {
+                return max(0, minVal - 10) ... maxVal + 10
+            }
+            return max(0, minVal - 10) ... maxVal + 10
+        }())
     }
 }
 

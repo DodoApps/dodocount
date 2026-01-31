@@ -83,10 +83,10 @@ struct ExtendedMetricItem: View {
                 Image(systemName: change >= 0 ? "arrow.up" : "arrow.down")
                     .font(.system(size: 8, weight: .bold))
 
-                Text(String(format: "%.1f%%", abs(change)))
+                Text(change.isFinite ? String(format: "%.1f%%", abs(change)) : "0.0%")
                     .font(.system(size: 10, weight: .medium))
             }
-            .foregroundColor(change >= 0 ? .green : .red)
+            .foregroundColor(change.isFinite && change >= 0 ? .green : (change.isFinite ? .red : .secondary))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }

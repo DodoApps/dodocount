@@ -71,7 +71,7 @@ struct SourceRow: View {
 
                 RoundedRectangle(cornerRadius: 3)
                     .fill(barColor.opacity(isHovered ? 0.9 : 0.7))
-                    .frame(width: maxBarWidth * (source.percentage / 100), height: 6)
+                    .frame(width: maxBarWidth * max(0, min(source.percentage, 100)) / 100, height: 6)
             }
 
             // Percentage

@@ -616,6 +616,9 @@ class AnalyticsService: ObservableObject {
 // MARK: - Formatting Helpers
 extension AnalyticsService {
     static func formatNumber(_ value: Double) -> String {
+        // Handle NaN, infinity, or negative values
+        guard value.isFinite && value >= 0 else { return "0" }
+
         if value >= 1_000_000 {
             return String(format: "%.1fM", value / 1_000_000)
         } else if value >= 1_000 {
@@ -626,18 +629,30 @@ extension AnalyticsService {
     }
 
     static func formatDuration(_ seconds: Double) -> String {
-        let minutes = Int(seconds) / 60
-        let secs = Int(seconds) % 60
+        // Handle NaN, infinity, or negative values
+        guard seconds.isFinite && seconds >= 0 else { return "0m 00s" }
+
+        let totalSeconds = Int(seconds)
+        let minutes = totalSeconds / 60
+        let secs = totalSeconds % 60
         return String(format: "%dm %02ds", minutes, secs)
     }
 
     static func formatPercentage(_ value: Double) -> String {
-        return String(format: "%.1f%%", value)
+        // Handle NaN, infinity
+        guard value.isFinite else { return "0.0%" }
+        // Clamp to reasonable range for display
+        let clamped = max(0, min(value, 100))
+        return String(format: "%.1f%%", clamped)
     }
 
     static func formatChange(_ value: Double) -> String {
-        let sign = value >= 0 ? "+" : ""
-        return String(format: "%@%.1f%%", sign, value)
+        // Handle NaN, infinity
+        guard value.isFinite else { return "+0.0%" }
+        // Clamp to reasonable range (-999% to +999%)
+        let clamped = max(-999, min(value, 999))
+        let sign = clamped >= 0 ? "+" : ""
+        return String(format: "%@%.1f%%", sign, clamped)
     }
 }
 
@@ -652,6 +667,8 @@ extension Array {
 enum AnalyticsError: LocalizedError {
     case apiError(String)
     case notAuthenticated
+    case networkError(String)
+    case noData
 
     var errorDescription: String? {
         switch self {
@@ -659,6 +676,33 @@ enum AnalyticsError: LocalizedError {
             return message
         case .notAuthenticated:
             return "Not authenticated. Please sign in with Google."
+        case .networkError(let message):
+            return "Network error: \(message)"
+        case .noData:
+            return "No data available"
         }
+    }
+}
+
+// MARK: - Network Helpers
+extension AnalyticsService {
+    /// Create a URLRequest with standard timeout and headers
+    private static func createRequest(url: URL, token: String, method: String = "GET") -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 30 // 30 second timeout
+        return request
+    }
+
+    /// Parse error message from Google API response
+    private static func parseErrorMessage(from data: Data, statusCode: Int) -> String {
+        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let error = json["error"] as? [String: Any],
+           let message = error["message"] as? String {
+            return message
+        }
+        return "Request failed with status \(statusCode)"
     }
 }
