@@ -170,13 +170,15 @@ struct MenuBarView: View {
                     }
                 }
             } label: {
-                HStack(spacing: 3) {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 9, weight: .medium))
-                    Text(L10n.Share.copyStats)
-                        .font(.system(size: 10, weight: .medium))
-                }
-                .foregroundColor(.secondary)
+                Text(L10n.Share.copyStats)
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(Color.primary.opacity(0.05))
+                    )
             }
             .menuStyle(.borderlessButton)
             .help(L10n.Share.copyStats)
