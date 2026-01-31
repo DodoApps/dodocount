@@ -39,6 +39,7 @@ enum L10n {
     enum Realtime {
         static let title = "realtime.title".localized
         static let activeUsers = "realtime.active_users".localized
+        static let last30Min = "realtime.last_30_min".localized
     }
 
     // MARK: - Goal
@@ -46,6 +47,10 @@ enum L10n {
         static let title = "goal.title".localized
         static func progress(_ current: Int, _ goal: Int) -> String { "goal.progress".localized(current, goal) }
         static let achieved = "goal.achieved".localized
+        static let crushed = "goal.crushed".localized
+        static let almostThere = "goal.almost_there".localized
+        static let keepGoing = "goal.keep_going".localized
+        static let justStarted = "goal.just_started".localized
     }
 
     // MARK: - Alerts
@@ -74,6 +79,8 @@ enum L10n {
     enum Extended {
         static let title = "extended.title".localized
         static let users = "extended.users".localized
+        static let events = "extended.events".localized
+        static let views = "extended.views".localized
         static let sessions = "extended.sessions".localized
         static let pageviews = "extended.pageviews".localized
         static let avgDuration = "extended.avg_duration".localized

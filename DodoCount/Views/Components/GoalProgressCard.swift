@@ -28,13 +28,13 @@ struct GoalProgressCard: View {
 
     private var statusText: String {
         if progress >= 1.5 {
-            return "Goal crushed!"
+            return L10n.Goal.crushed
         } else if progress >= 1.0 {
-            return "Goal reached!"
+            return L10n.Goal.achieved
         } else if progress >= 0.7 {
-            return "Almost there"
+            return L10n.Goal.almostThere
         } else {
-            return "Keep going"
+            return L10n.Goal.keepGoing
         }
     }
 
@@ -47,7 +47,7 @@ struct GoalProgressCard: View {
                         .font(.system(size: 11, weight: .medium))
                         .foregroundColor(progressColor)
 
-                    Text("DAILY GOAL")
+                    Text(L10n.Goal.title)
                         .font(.system(size: 10, weight: .semibold))
                         .foregroundColor(.secondary)
                         .tracking(0.5)

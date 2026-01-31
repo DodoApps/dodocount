@@ -167,7 +167,10 @@ class AnalyticsService: ObservableObject {
     private func fetchProperties() async throws {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(adminAPIBase)/accountSummaries")!)
+        guard let url = URL(string: "\(adminAPIBase)/accountSummaries") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -216,7 +219,10 @@ class AnalyticsService: ObservableObject {
     private func fetchRealtimeData(propertyId: String) async throws -> RealtimeData {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runRealtimeReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runRealtimeReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -248,15 +254,19 @@ class AnalyticsService: ObservableObject {
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
         // Current 28-day period
-        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let startDate = Calendar.current.date(byAdding: .day, value: -28, to: endDate)!
-
-        // Previous 28-day period
-        let prevEndDate = Calendar.current.date(byAdding: .day, value: -1, to: startDate)!
-        let prevStartDate = Calendar.current.date(byAdding: .day, value: -28, to: prevEndDate)!
+        let calendar = Calendar.current
+        guard let endDate = calendar.date(byAdding: .day, value: -1, to: Date()),
+              let startDate = calendar.date(byAdding: .day, value: -28, to: endDate),
+              let prevEndDate = calendar.date(byAdding: .day, value: -1, to: startDate),
+              let prevStartDate = calendar.date(byAdding: .day, value: -28, to: prevEndDate) else {
+            throw AnalyticsError.apiError("Failed to calculate date range")
+        }
 
         // Fetch current period with daily breakdown
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -331,7 +341,10 @@ class AnalyticsService: ObservableObject {
     private func fetchDailyMetrics(propertyId: String) async throws -> DailyMetrics {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -390,7 +403,10 @@ class AnalyticsService: ObservableObject {
     private func fetchTopPages(propertyId: String) async throws -> [TopPage] {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -430,7 +446,10 @@ class AnalyticsService: ObservableObject {
     private func fetchTrafficSources(propertyId: String) async throws -> [TrafficSource] {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -478,7 +497,10 @@ class AnalyticsService: ObservableObject {
     private func fetchCountries(propertyId: String) async throws -> [CountryData] {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -526,7 +548,10 @@ class AnalyticsService: ObservableObject {
     private func fetchDevices(propertyId: String) async throws -> DeviceBreakdown {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(dataAPIBase)/\(propertyId):runReport")!)
+        guard let url = URL(string: "\(dataAPIBase)/\(propertyId):runReport") else {
+            throw AnalyticsError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

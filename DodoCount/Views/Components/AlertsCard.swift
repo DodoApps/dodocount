@@ -30,7 +30,7 @@ struct AlertsCard: View {
                             }
                         }
 
-                        Text("ALERTS")
+                        Text(L10n.Alerts.title)
                             .font(.system(size: 10, weight: .semibold))
                             .foregroundColor(.secondary)
                             .tracking(0.5)
@@ -62,7 +62,7 @@ struct AlertsCard: View {
                             Image(systemName: "bell.slash")
                                 .font(.system(size: 20))
                                 .foregroundColor(.secondary.opacity(0.5))
-                            Text("No recent alerts")
+                            Text(L10n.Alerts.noAlerts)
                                 .font(.system(size: 11))
                                 .foregroundColor(.secondary.opacity(0.6))
                         }
@@ -124,7 +124,7 @@ struct AlertRow: View {
             Spacer()
 
             // Time
-            Text(timeAgo(alert.timestamp))
+            Text(DateUtilities.timeAgoCompact(alert.timestamp))
                 .font(.system(size: 9))
                 .foregroundColor(.secondary.opacity(0.6))
         }
@@ -138,19 +138,6 @@ struct AlertRow: View {
             withAnimation(.easeInOut(duration: 0.12)) {
                 isHovered = hovering
             }
-        }
-    }
-
-    private func timeAgo(_ date: Date) -> String {
-        let seconds = Int(-date.timeIntervalSinceNow)
-        if seconds < 60 {
-            return "now"
-        } else if seconds < 3600 {
-            return "\(seconds / 60)m"
-        } else if seconds < 86400 {
-            return "\(seconds / 3600)h"
-        } else {
-            return "\(seconds / 86400)d"
         }
     }
 }

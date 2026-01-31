@@ -33,6 +33,7 @@
 		1A00004E0000000000000001 /* ExtendedMetricsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00004F0000000000000001 /* ExtendedMetricsCard.swift */; };
 		1A0000500000000000000001 /* SearchConsoleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000510000000000000001 /* SearchConsoleCard.swift */; };
 		1A0000520000000000000001 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000530000000000000001 /* Localization.swift */; };
+		1A0000560000000000000001 /* DateUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000550000000000000001 /* DateUtilities.swift */; };
 		1A0000600000000000000001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000610000000000000001 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		1A00004F0000000000000001 /* ExtendedMetricsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedMetricsCard.swift; sourceTree = "<group>"; };
 		1A0000510000000000000001 /* SearchConsoleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConsoleCard.swift; sourceTree = "<group>"; };
 		1A0000530000000000000001 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		1A0000550000000000000001 /* DateUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilities.swift; sourceTree = "<group>"; };
 		1A0000620000000000000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = DodoCount/Resources/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		1A0000630000000000000001 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = DodoCount/Resources/tr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		1A0000640000000000000001 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = DodoCount/Resources/de.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				1A0000530000000000000001 /* Localization.swift */,
+				1A0000550000000000000001 /* DateUtilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				1A00004E0000000000000001 /* ExtendedMetricsCard.swift in Sources */,
 				1A0000500000000000000001 /* SearchConsoleCard.swift in Sources */,
 				1A0000520000000000000001 /* Localization.swift in Sources */,
+				1A0000560000000000000001 /* DateUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

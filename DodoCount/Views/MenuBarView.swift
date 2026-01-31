@@ -155,7 +155,7 @@ struct MenuBarView: View {
             HStack(spacing: 4) {
                 Image(systemName: "clock")
                     .font(.system(size: 10))
-                Text("Updated \(timeAgo(analyticsService.lastUpdated))")
+                Text("Updated \(DateUtilities.timeAgo(analyticsService.lastUpdated))")
                     .font(.system(size: 10))
             }
             .foregroundColor(.secondary.opacity(0.7))
@@ -209,19 +209,6 @@ struct MenuBarView: View {
 
     private func openSettings() {
         NSApp.sendAction(#selector(AppDelegate.openSettingsWindow), to: nil, from: nil)
-    }
-
-    private func timeAgo(_ date: Date) -> String {
-        let seconds = Int(-date.timeIntervalSinceNow)
-        if seconds < 60 {
-            return "just now"
-        } else if seconds < 3600 {
-            let minutes = seconds / 60
-            return "\(minutes)m ago"
-        } else {
-            let hours = seconds / 3600
-            return "\(hours)h ago"
-        }
     }
 }
 

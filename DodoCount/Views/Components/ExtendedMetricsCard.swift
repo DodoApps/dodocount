@@ -8,7 +8,7 @@ struct ExtendedMetricsCard: View {
         VStack(alignment: .leading, spacing: 12) {
             // Header
             HStack {
-                Text("28-DAY OVERVIEW")
+                Text(L10n.Extended.title)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(.secondary)
                     .tracking(0.5)
@@ -19,7 +19,7 @@ struct ExtendedMetricsCard: View {
             // Metrics row
             HStack(spacing: 0) {
                 ExtendedMetricItem(
-                    label: "Users",
+                    label: L10n.Extended.users,
                     value: AnalyticsService.formatNumber(metrics.activeUsers28Day.today),
                     change: metrics.activeUsers28Day.percentChange,
                     color: .blue
@@ -30,7 +30,7 @@ struct ExtendedMetricsCard: View {
                     .padding(.horizontal, 8)
 
                 ExtendedMetricItem(
-                    label: "Events",
+                    label: L10n.Extended.events,
                     value: AnalyticsService.formatNumber(metrics.eventCount.today),
                     change: metrics.eventCount.percentChange,
                     color: .green
@@ -41,7 +41,7 @@ struct ExtendedMetricsCard: View {
                     .padding(.horizontal, 8)
 
                 ExtendedMetricItem(
-                    label: "Views",
+                    label: L10n.Extended.views,
                     value: AnalyticsService.formatNumber(metrics.pageviews.today),
                     change: metrics.pageviews.percentChange,
                     color: .orange

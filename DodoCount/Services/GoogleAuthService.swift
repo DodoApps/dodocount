@@ -78,7 +78,11 @@ class GoogleAuthService: NSObject, ObservableObject {
         error = nil
 
         // Build authorization URL
-        var components = URLComponents(string: authorizationEndpoint)!
+        guard var components = URLComponents(string: authorizationEndpoint) else {
+            self.error = "Failed to build authorization URL"
+            self.isAuthenticating = false
+            return
+        }
         components.queryItems = [
             URLQueryItem(name: "client_id", value: clientId),
             URLQueryItem(name: "redirect_uri", value: redirectUri),
@@ -192,7 +196,10 @@ class GoogleAuthService: NSObject, ObservableObject {
     }
 
     private func exchangeCodeForTokens(code: String) async throws {
-        var request = URLRequest(url: URL(string: tokenEndpoint)!)
+        guard let url = URL(string: tokenEndpoint) else {
+            throw AuthError.tokenExchangeFailed
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
@@ -234,7 +241,10 @@ class GoogleAuthService: NSObject, ObservableObject {
     }
 
     private func refreshAccessToken(refreshToken: String) async throws {
-        var request = URLRequest(url: URL(string: tokenEndpoint)!)
+        guard let url = URL(string: tokenEndpoint) else {
+            throw AuthError.tokenRefreshFailed
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
@@ -269,7 +279,8 @@ class GoogleAuthService: NSObject, ObservableObject {
     private func fetchUserInfo() async throws {
         guard let token = accessToken else { return }
 
-        var request = URLRequest(url: URL(string: "https://www.googleapis.com/oauth2/v2/userinfo")!)
+        guard let url = URL(string: "https://www.googleapis.com/oauth2/v2/userinfo") else { return }
+        var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, _) = try await URLSession.shared.data(for: request)
@@ -283,7 +294,7 @@ class GoogleAuthService: NSObject, ObservableObject {
     // MARK: - Keychain Helpers
 
     private func saveToKeychain(key: String, value: String) {
-        let data = value.data(using: .utf8)!
+        guard let data = value.data(using: .utf8) else { return }
 
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,

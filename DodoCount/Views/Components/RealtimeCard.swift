@@ -29,7 +29,7 @@ struct RealtimeCard: View {
 
                 Spacer()
 
-                Text("Last 30 min")
+                Text(L10n.Realtime.last30Min)
                     .font(.system(size: 10))
                     .foregroundColor(.secondary.opacity(0.7))
             }

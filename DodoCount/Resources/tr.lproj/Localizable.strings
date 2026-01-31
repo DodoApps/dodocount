@@ -22,11 +22,16 @@
 // MARK: - Realtime Card
 "realtime.title" = "CANLI";
 "realtime.active_users" = "aktif kullanıcı";
+"realtime.last_30_min" = "Son 30 dk";
 
 // MARK: - Goal Progress
 "goal.title" = "GÜNLÜK HEDEF";
 "goal.progress" = "%d / %d kullanıcı";
 "goal.achieved" = "Hedefe ulaşıldı!";
+"goal.crushed" = "Hedef aşıldı!";
+"goal.almost_there" = "Neredeyse tamam!";
+"goal.keep_going" = "Devam et!";
+"goal.just_started" = "Yeni başladı";
 
 // MARK: - Alerts
 "alerts.title" = "UYARILAR";
@@ -48,6 +53,9 @@
 
 // MARK: - Extended Metrics (28-Day)
 "extended.title" = "28 GÜNLÜK ÖZET";
+"extended.users" = "Kullanıcılar";
+"extended.events" = "Olaylar";
+"extended.views" = "Görüntüleme";
 "extended.users" = "Kullanıcılar";
 "extended.sessions" = "Oturumlar";
 "extended.pageviews" = "Sayfa Görüntüleme";

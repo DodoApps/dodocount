@@ -22,11 +22,16 @@
 // MARK: - Realtime Card
 "realtime.title" = "ECHTZEIT";
 "realtime.active_users" = "aktive Nutzer";
+"realtime.last_30_min" = "Letzte 30 Min";
 
 // MARK: - Goal Progress
 "goal.title" = "TAGESZIEL";
 "goal.progress" = "%d von %d Nutzern";
 "goal.achieved" = "Ziel erreicht!";
+"goal.crushed" = "Ziel übertroffen!";
+"goal.almost_there" = "Fast geschafft!";
+"goal.keep_going" = "Weiter so!";
+"goal.just_started" = "Gerade gestartet";
 
 // MARK: - Alerts
 "alerts.title" = "WARNUNGEN";
@@ -49,6 +54,8 @@
 // MARK: - Extended Metrics (28-Day)
 "extended.title" = "28-TAGE ÜBERSICHT";
 "extended.users" = "Nutzer";
+"extended.events" = "Ereignisse";
+"extended.views" = "Aufrufe";
 "extended.sessions" = "Sitzungen";
 "extended.pageviews" = "Seitenaufrufe";
 "extended.avg_duration" = "Ø Dauer";

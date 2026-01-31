@@ -124,7 +124,10 @@ class SearchConsoleService: ObservableObject {
     private func fetchSites() async throws {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        var request = URLRequest(url: URL(string: "\(apiBase)/sites")!)
+        guard let url = URL(string: "\(apiBase)/sites") else {
+            throw SearchConsoleError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -160,12 +163,13 @@ class SearchConsoleService: ObservableObject {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
         // Current period: last 28 days
-        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let startDate = Calendar.current.date(byAdding: .day, value: -28, to: endDate)!
-
-        // Previous period: 28 days before that
-        let prevEndDate = Calendar.current.date(byAdding: .day, value: -1, to: startDate)!
-        let prevStartDate = Calendar.current.date(byAdding: .day, value: -28, to: prevEndDate)!
+        let calendar = Calendar.current
+        guard let endDate = calendar.date(byAdding: .day, value: -1, to: Date()),
+              let startDate = calendar.date(byAdding: .day, value: -28, to: endDate),
+              let prevEndDate = calendar.date(byAdding: .day, value: -1, to: startDate),
+              let prevStartDate = calendar.date(byAdding: .day, value: -28, to: prevEndDate) else {
+            throw SearchConsoleError.apiError("Failed to calculate date range")
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -246,8 +250,11 @@ class SearchConsoleService: ObservableObject {
     private func fetchTopQueries(siteUrl: String) async throws -> [SearchQuery] {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let startDate = Calendar.current.date(byAdding: .day, value: -28, to: endDate)!
+        let calendar = Calendar.current
+        guard let endDate = calendar.date(byAdding: .day, value: -1, to: Date()),
+              let startDate = calendar.date(byAdding: .day, value: -28, to: endDate) else {
+            throw SearchConsoleError.apiError("Failed to calculate date range")
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -278,8 +285,11 @@ class SearchConsoleService: ObservableObject {
     private func fetchTopPages(siteUrl: String) async throws -> [SearchPage] {
         let token = try await GoogleAuthService.shared.getValidAccessToken()
 
-        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
-        let startDate = Calendar.current.date(byAdding: .day, value: -28, to: endDate)!
+        let calendar = Calendar.current
+        guard let endDate = calendar.date(byAdding: .day, value: -1, to: Date()),
+              let startDate = calendar.date(byAdding: .day, value: -28, to: endDate) else {
+            throw SearchConsoleError.apiError("Failed to calculate date range")
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -317,7 +327,10 @@ class SearchConsoleService: ObservableObject {
     ) async throws -> [[String: Any]] {
         let encodedSiteUrl = siteUrl.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? siteUrl
 
-        var request = URLRequest(url: URL(string: "\(apiBase)/sites/\(encodedSiteUrl)/searchAnalytics/query")!)
+        guard let url = URL(string: "\(apiBase)/sites/\(encodedSiteUrl)/searchAnalytics/query") else {
+            throw SearchConsoleError.apiError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

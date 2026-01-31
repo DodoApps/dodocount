@@ -7,6 +7,12 @@ struct SettingsView: View {
     @ObservedObject private var authService = GoogleAuthService.shared
     @State private var selectedTab = 0
 
+    private var appVersion: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        return "v\(version) (\(build))"
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             // Header with tabs
@@ -42,7 +48,7 @@ struct SettingsView: View {
 
             // Footer
             HStack {
-                Text("DodoCount v1.0.0")
+                Text("DodoCount \(appVersion)")
                     .font(.system(size: 11))
                     .foregroundColor(.secondary)
 
@@ -334,7 +340,7 @@ struct SettingsView: View {
                 try SMAppService.mainApp.unregister()
             }
         } catch {
-            print("Failed to set launch at login: \(error)")
+            // Launch at login setting failed - could add error handling UI here if needed
         }
     }
 }
