@@ -6,6 +6,8 @@ A beautiful macOS menubar app for Google Analytics 4 and Search Console.
 ![Swift](https://img.shields.io/badge/Swift-5.0-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+🌐 **Translations:** [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Español](README.es.md)
+
 ## Features
 
 - **Real-time visitor tracking** - See active users directly in your menubar
@@ -85,6 +87,3 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 © 2026 DodoApps
 
----
-
-**Other languages:** [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Español](README.es.md)

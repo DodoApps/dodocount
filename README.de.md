@@ -6,6 +6,8 @@ Eine elegante macOS Menüleisten-App für Google Analytics 4 und Search Console.
 ![Swift](https://img.shields.io/badge/Swift-5.0-orange)
 ![License](https://img.shields.io/badge/Lizenz-MIT-green)
 
+🌐 **Übersetzungen:** [English](README.md) | [Türkçe](README.tr.md) | [Français](README.fr.md) | [Español](README.es.md)
+
 ## Funktionen
 
 - **Echtzeit-Besucherverfolgung** - Aktive Nutzer direkt in Ihrer Menüleiste sehen
@@ -85,6 +87,3 @@ MIT Lizenz - siehe [LICENSE](LICENSE) für Details.
 
 © 2026 DodoApps
 
----
-
-**Andere Sprachen:** [English](README.md) | [Türkçe](README.tr.md) | [Français](README.fr.md) | [Español](README.es.md)

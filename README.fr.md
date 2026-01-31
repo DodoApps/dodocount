@@ -6,6 +6,8 @@ Une élégante application de barre de menus macOS pour Google Analytics 4 et Se
 ![Swift](https://img.shields.io/badge/Swift-5.0-orange)
 ![License](https://img.shields.io/badge/Licence-MIT-green)
 
+🌐 **Traductions :** [English](README.md) | [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Español](README.es.md)
+
 ## Fonctionnalités
 
 - **Suivi des visiteurs en temps réel** - Voyez les utilisateurs actifs directement dans votre barre de menus
@@ -85,6 +87,3 @@ Licence MIT - voir [LICENSE](LICENSE) pour les détails.
 
 © 2026 DodoApps
 
----
-
-**Autres langues :** [English](README.md) | [Türkçe](README.tr.md) | [Deutsch](README.de.md) | [Español](README.es.md)

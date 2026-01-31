@@ -6,6 +6,8 @@ macOS için şık bir Google Analytics 4 ve Search Console menü çubuğu uygula
 ![Swift](https://img.shields.io/badge/Swift-5.0-orange)
 ![License](https://img.shields.io/badge/Lisans-MIT-green)
 
+🌐 **Çeviriler:** [English](README.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Español](README.es.md)
+
 ## Özellikler
 
 - **Gerçek zamanlı ziyaretçi takibi** - Aktif kullanıcıları doğrudan menü çubuğunuzda görün
@@ -85,6 +87,3 @@ MIT Lisansı - detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 © 2026 DodoApps
 
----
-
-**Diğer diller:** [English](README.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Español](README.es.md)
