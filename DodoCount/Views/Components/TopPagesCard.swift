@@ -22,9 +22,9 @@ struct TopPagesCard: View {
             .padding(.top, 8)
             .padding(.bottom, 6)
 
-            // Pages list
+            // Pages list (limit to 10 for menubar)
             VStack(spacing: 2) {
-                ForEach(pages) { page in
+                ForEach(pages.prefix(10)) { page in
                     TopPageRow(page: page)
                 }
             }

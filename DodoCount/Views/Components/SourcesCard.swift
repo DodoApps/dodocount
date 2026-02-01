@@ -20,9 +20,9 @@ struct SourcesCard: View {
             .padding(.top, 8)
             .padding(.bottom, 6)
 
-            // Sources list
+            // Sources list (limit to 10 for menubar)
             VStack(spacing: 4) {
-                ForEach(sources) { source in
+                ForEach(sources.prefix(10)) { source in
                     SourceRow(source: source, maxBarWidth: maxBarWidth)
                 }
             }
