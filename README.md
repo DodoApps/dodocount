@@ -8,6 +8,11 @@
   A beautiful macOS menubar app for Google Analytics 4 and Search Console.
 </p>
 
+<img width="337" height="724" alt="image" src="https://github.com/user-attachments/assets/ee7dd7e5-9951-4157-94bb-29ccbf15edb6" />
+<img width="348" height="763" alt="image" src="https://github.com/user-attachments/assets/59f64d9e-98e0-425a-9f5d-2851a5bc7dc2" />
+<img width="350" height="763" alt="image" src="https://github.com/user-attachments/assets/0c583250-f83e-4da8-920a-d71761cc4ee7" />
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-14.0+-blue" alt="macOS" />
   <img src="https://img.shields.io/badge/Swift-5.0-orange" alt="Swift" />
