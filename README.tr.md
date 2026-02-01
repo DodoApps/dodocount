@@ -9,6 +9,12 @@
 </p>
 
 <p align="center">
+  <img width="280" alt="Screenshot 1" src="https://github.com/user-attachments/assets/ee7dd7e5-9951-4157-94bb-29ccbf15edb6" />
+  <img width="280" alt="Screenshot 2" src="https://github.com/user-attachments/assets/59f64d9e-98e0-425a-9f5d-2851a5bc7dc2" />
+  <img width="280" alt="Screenshot 3" src="https://github.com/user-attachments/assets/0c583250-f83e-4da8-920a-d71761cc4ee7" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/macOS-14.0+-blue" alt="macOS" />
   <img src="https://img.shields.io/badge/Swift-5.0-orange" alt="Swift" />
   <img src="https://img.shields.io/badge/Lisans-MIT-green" alt="License" />
