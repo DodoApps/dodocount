@@ -1,3 +1,5 @@
+
+##  This product cannot be used until Google accepts/confirms the product, as it uses OAuth
 <p align="center">
   <img src="dodocount.png" alt="DodoCount" width="200" />
 </p>
